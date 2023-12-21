@@ -18,6 +18,9 @@ export const NavbarComponent = () => {
       <li>
         <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
+      <li>
+        <NavLink to="/faq">FAQ</NavLink>
+      </li>
     </>
   );
   return (

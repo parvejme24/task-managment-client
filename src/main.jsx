@@ -11,6 +11,7 @@ import Register from "./Pages/Register/Register.jsx";
 import Dashboard from "./Pages/Dashboard/Dashboard.jsx";
 import PrivetRout from "./Routes/PrivetRoute";
 import { TaskProvider } from "./contexts/TaskContext.jsx";
+import FAQ from "./Pages/FAQ/FAQ.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
             <Dashboard />
           </PrivetRout>
         ),
+      },
+      {
+        path: "faq",
+        element: <FAQ />,
       },
     ],
   },
