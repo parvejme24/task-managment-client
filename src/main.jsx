@@ -7,6 +7,10 @@ import Home from "./Pages/Home/Home.jsx";
 import Login from "./Pages/Login/Login.jsx";
 import AuthProvider from "./AuthProvider/AuthProvider.jsx";
 import { HelmetProvider } from "react-helmet-async";
+import Register from "./Pages/Register/Register.jsx";
+import Dashboard from "./Pages/Dashboard/Dashboard.jsx";
+import PrivetRout from "./Routes/PrivetRoute";
+import { TaskProvider } from "./contexts/TaskContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +27,15 @@ const router = createBrowserRouter([
       },
       {
         path: "register",
+        element: <Register />,
+      },
+      {
+        path: "dashboard",
+        element: (
+          <PrivetRout>
+            <Dashboard />
+          </PrivetRout>
+        ),
       },
     ],
   },
@@ -30,10 +43,12 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <HelmetProvider>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </HelmetProvider>
+    <TaskProvider>
+      <HelmetProvider>
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </HelmetProvider>
+    </TaskProvider>
   </React.StrictMode>
 );
