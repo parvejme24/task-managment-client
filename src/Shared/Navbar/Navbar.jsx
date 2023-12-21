@@ -16,7 +16,7 @@ export const NavbarComponent = () => {
     </>
   );
   return (
-    <div className="shadow-md">
+    <div className="shadow-md sticky top-0">
       <Navbar className="container mx-auto" fluid={true}>
         <Navbar.Container className="flex items-center justify-between">
           <Navbar.Container className="flex items-center">
