@@ -11,7 +11,7 @@ const Footer = () => {
     <div className="bg-blue-100 py-14">
       <div className="container mx-auto text-center space-y-4">
         <img className="mx-auto" src={logo} />
-        <p className="text-lg max-w-[50%] mx-auto">
+        <p className="text-lg max-w-[90%] lg:max-w-[50%] mx-auto">
           Simplify your life with our powerful task management system. Stay
           organized, focused, and productive with Task Manager.
         </p>
