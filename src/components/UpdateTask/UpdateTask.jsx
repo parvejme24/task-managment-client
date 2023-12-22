@@ -22,7 +22,7 @@ const UpdateTask = () => {
       priority: task.priority,
     };
 
-    fetch(`http://localhost:3030/api/tasks/${_id}`, {
+    fetch(`https://taskup-server.vercel.app/api/tasks/api/tasks/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

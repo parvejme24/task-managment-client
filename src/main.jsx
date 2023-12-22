@@ -53,7 +53,7 @@ const router = createBrowserRouter([
         element: <UpdateTask />,
         loader: ({ params }) =>
           fetch(
-            `https://http://localhost:3030/api/tasks/${params._id}`
+            `https://https://taskup-server.vercel.app/api/tasks/api/tasks/${params._id}`
           ),
       },
     ],
