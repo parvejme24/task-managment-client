@@ -49,8 +49,12 @@ const router = createBrowserRouter([
         element: <AddNewTask />,
       },
       {
-        path: "updateTask",
+        path: "/updateTask/:id",
         element: <UpdateTask />,
+        loader: ({ params }) =>
+          fetch(
+            `https://http://localhost:3030/api/tasks/${params._id}`
+          ),
       },
     ],
   },

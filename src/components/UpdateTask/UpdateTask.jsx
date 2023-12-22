@@ -1,46 +1,45 @@
 import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "./../../AuthProvider/AuthProvider";
+import { useLoaderData } from "react-router-dom";
 
-const AddNewTask = () => {
+const UpdateTask = () => {
+  const task = useLoaderData();
   const { user } = useContext(AuthContext);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [deadline, setDeadline] = useState("");
   const [priority, setPriority] = useState("moderate");
 
-  const handleAddTask = (e) => {
-    e.preventDefault();
+  const handleUpdateTask = (event) => {
+    event.preventDefault();
 
-    const newTask = {
-      title,
+    const updateTask = {
+      title: task.title,
       userEmail: user.email,
-      description,
+      description: task.description,
       deadline: new Date(deadline),
-      priority,
+      priority: task.priority,
     };
 
-    console.log("New Task:", newTask);
-
-    fetch(`https://taskup-server.vercel.app/api/addTask`, {
-      method: "POST",
+    fetch(`http://localhost:3030/api/tasks/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newTask),
+      body: JSON.stringify(updateTask),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           Swal.fire({
             title: "Success!",
-            text: "New Task Added Successfully",
+            text: "Update Task Successfully",
             icon: "success",
-            confirmButtonText: "Ok",
+            confirmButtonText: "Cool",
           });
         }
-        form.reset();
       });
   };
 
@@ -50,7 +49,7 @@ const AddNewTask = () => {
         <h2 className="text-2xl font-bold mb-4 text-center text-blue-600">
           Update A Task
         </h2>
-        <form onSubmit={handleAddTask} className="space-y-4">
+        <form onSubmit={handleUpdateTask} className="space-y-4">
           <label className="block">
             <span className="text-gray-700">Title:</span>
             <input
@@ -94,7 +93,7 @@ const AddNewTask = () => {
             type="submit"
             className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
           >
-            Add Task
+            Update Task
           </button>
         </form>
       </div>
@@ -102,4 +101,4 @@ const AddNewTask = () => {
   );
 };
 
-export default AddNewTask;
+export default UpdateTask;

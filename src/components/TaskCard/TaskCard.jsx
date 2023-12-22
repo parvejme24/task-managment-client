@@ -32,8 +32,6 @@ const TaskCard = ({ task }) => {
                 "Your Task has been deleted.",
                 "success"
               );
-              // const remaining = cartItems.filter((item) => item._id !== _id);
-              // setCartItems(remaining);
             }
           });
       }
@@ -51,7 +49,7 @@ const TaskCard = ({ task }) => {
         Priority: {priority}
       </p>
       <div className="flex justify-between">
-        <Link to="/updateTask">
+        <Link to={`/api/updateTask/${_id}`}>
           <button
             onClick={() => handleUpdate(task)}
             className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
