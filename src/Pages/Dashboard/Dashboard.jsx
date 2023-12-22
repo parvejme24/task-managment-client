@@ -1,29 +1,27 @@
-// import React from 'react';
-
-// const Dashboard = () => {
-//     return (
-//         <div className='container mx-auto py-12'>
-//             <h2>This is dashboard</h2>
-//         </div>
-//     );
-// };
-
-// export default Dashboard;
-
-// // Dashboard.jsx
-
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UserProfile from "../../components/UserProfile/UserProfile";
 import TaskList from "../../components/TaskList/TaskList";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { deleteTask, fetchTasks, updateTask } from "../../Services/api";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
 
+  const [tasks, setTasks] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:3030/api/tasks?email=${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setTasks(data));
+  }, []);
+
+
+
   return (
-    <div className="container mx-auto mt-8">
+    <div className="container mx-auto py-12">
       <UserProfile user={user} />
-      <TaskList />
+      <TaskList
+        tasks={tasks}
+      />
     </div>
   );
 };

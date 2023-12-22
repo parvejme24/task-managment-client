@@ -57,27 +57,17 @@ const FAQSection = () => {
   ];
 
   return (
-    // <div className="container mx-auto py-12">
-    //   <h2 className="text-3xl font-semibold mb-8">
-    //     Frequently Asked Questions
-    //   </h2>
-    //   <div className="grid gap-6">
-    //     {faqData.map((faq, index) => (
-    //       <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-    //         <h3 className="text-xl font-semibold mb-4">{faq.question}</h3>
-    //         <p className="text-gray-700">{faq.answer}</p>
-    //       </div>
-    //     ))}
-    //   </div>
-    // </div>
-
     <div className="container mx-auto py-14">
-      <h2 className="text-center mb-12 text-4xl font-bold text-blue-600">FAQ</h2>
+      <h2 className="text-center mb-12 text-4xl font-bold text-blue-600">
+        FAQ
+      </h2>
       <Accordion className="space-y-3 px-10">
         {faqData.map((item) => (
           <Accordion.Panel>
             <Accordion.Container>
-              <Accordion.Title className="text-blue-500">{item.question}</Accordion.Title>
+              <Accordion.Title className="text-blue-500">
+                {item.question}
+              </Accordion.Title>
               <Accordion.Icon>
                 <Plus size={24} color="#444" />
               </Accordion.Icon>

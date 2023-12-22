@@ -1,16 +1,13 @@
-// api.js
-
-const BASE_URL = "http://localhost:4040/api"; // Update with your actual API base URL
+const BASE_URL = "http://localhost:3030/api";
 
 const headers = {
   "Content-Type": "application/json",
-  // Add any other headers you may need, such as authentication headers
 };
 
 // Function to handle API requests for tasks
 export const fetchTasks = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/tasks`, { headers });
+    const response = await fetch(`${BASE_URL}/tasks/${user.email}`, { headers });
 
     if (!response.ok) {
       throw new Error("Failed to fetch tasks");
