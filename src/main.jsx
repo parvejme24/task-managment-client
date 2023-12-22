@@ -13,6 +13,7 @@ import PrivetRout from "./Routes/PrivetRoute";
 import { TaskProvider } from "./contexts/TaskContext.jsx";
 import FAQ from "./Pages/FAQ/FAQ.jsx";
 import AddNewTask from "./components/AddNewTask/AddNewTask.jsx";
+import UpdateTask from "./components/UpdateTask/UpdateTask.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "addNewTask",
         element: <AddNewTask />,
+      },
+      {
+        path: "updateTask",
+        element: <UpdateTask />,
       },
     ],
   },

@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:3030/api/tasks?email=${user.email}`)
+    fetch(`https://taskup-server.vercel.app/api/tasks?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setTasks(data));
   }, []);

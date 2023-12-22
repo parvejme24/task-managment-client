@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3030/api";
+const BASE_URL = "https://taskup-server.vercel.app/api";
 
 const headers = {
   "Content-Type": "application/json",

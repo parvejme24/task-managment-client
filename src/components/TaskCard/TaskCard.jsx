@@ -1,18 +1,43 @@
 // TaskCard.jsx
 
 import React from "react";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const TaskCard = ({ task, onTaskUpdate, onTaskDelete }) => {
+const TaskCard = ({ task }) => {
   const { _id, title, description, deadline, priority } = task;
 
-  const handleUpdate = () => {
-    // Implement the logic for updating a task
-    onTaskUpdate(_id);
-  };
+  const handleUpdate = () => {};
 
-  const handleDelete = () => {
-    // Implement the logic for deleting a task
-    onTaskDelete(_id);
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3030/api/tasks/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                "Deleted!",
+                "Your Task has been deleted.",
+                "success"
+              );
+              // const remaining = cartItems.filter((item) => item._id !== _id);
+              // setCartItems(remaining);
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -26,14 +51,16 @@ const TaskCard = ({ task, onTaskUpdate, onTaskDelete }) => {
         Priority: {priority}
       </p>
       <div className="flex justify-between">
+        <Link to="/updateTask">
+          <button
+            onClick={() => handleUpdate(task)}
+            className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
+          >
+            Update
+          </button>
+        </Link>
         <button
-          onClick={handleUpdate}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
-        >
-          Update
-        </button>
-        <button
-          onClick={handleDelete}
+          onClick={() => handleDelete(_id)}
           className="bg-red-500 text-white px-4 py-2 rounded-md"
         >
           Delete

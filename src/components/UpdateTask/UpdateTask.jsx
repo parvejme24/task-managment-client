@@ -48,7 +48,7 @@ const AddNewTask = () => {
     <div className="container mx-auto py-24">
       <div className=" mx-auto max-w-md p-8 rounded-md shadow-md">
         <h2 className="text-2xl font-bold mb-4 text-center text-blue-600">
-          Add New Task
+          Update A Task
         </h2>
         <form onSubmit={handleAddTask} className="space-y-4">
           <label className="block">
